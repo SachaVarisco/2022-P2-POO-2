@@ -1,15 +1,11 @@
-class Enemigo {
-    constructor(props){
-        const { nombre, vida, poder } = props; // destructuring
+class Enemigo{
+    constructor(vida, poder){
         this.vida = vida;
         this.poder = poder;
-        this.nombre = nombre;
     }
-
     atacar(jugador){
-        console.log('dañar al jugador')
+        console.log("Jugador dañado")
         jugador.recibirDano(this.poder);
     }
 }
-
 export default Enemigo;

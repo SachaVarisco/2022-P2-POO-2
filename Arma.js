@@ -1,13 +1,12 @@
-class Arma {
-    constructor(nombre, poder, esManual, balas = null){
+class Arma{
+    constructor(nombre, poder, manual, balas=null){
         this.nombre = nombre;
         this.poder = poder;
-        this.esManual = esManual;
-        if(!esManual) {
+        this.manuela = manual;
+        if(!manual){
             this.balas = balas;
         }
-        // TODO: agregar balas por ataque
+    
     }
 }
-
 export default Arma;

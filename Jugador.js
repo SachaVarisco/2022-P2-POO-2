@@ -1,53 +1,44 @@
-class Jugador {
-    constructor(vida, tiempo, armas = [], estaVivo = true){
-        this.estaVivo = estaVivo;
+class Jugador{
+    constructor(vida, tiempo, armas=[], estaVivo=true){
+        this.estaVivo = estaVivo
         this.vida = vida;
-        this.tiempoDeVida = tiempo;
+        this.tiempo = tiempo;
         this.armas = armas;
-        // arma seleccionada
-        this.descontarTiempoDeVida();
+        this.descontarTiempo()
     }
-    
-    // seleccionar arma
 
     recolectarArma(nuevaArma){
-        this.armas.push(nuevaArma);
+        this.armas.push(nuevaArma)
     }
 
-    atacar(enemigo, arma){
-        enemigo.vida -= arma.poder;
+    atacarEnemigo(enemigo,arma){
+        enemigo.vida-=arma.poder;
         if(enemigo.vida <= 0){
-            // TODO: destruir enemigo
             enemigo.vida = 0;
         }
     }
-
-    recibirDano(dano) {
-        // animacion de daño
-        // sonido
-        // etc
+     
+    recibirDano(dano){
         this.vida -= dano;
-        if (this.vida <= 0) {
-            // animacion muerte
+        if(this.vida <= 0){
             this.estaVivo = false;
             this.vida = 0;
-            console.error('jugador murio');
+            console.error("Jugador ha muerto.")
         }
     }
 
-    // evento recursivo que descuente tiempo
-    descontarTiempoDeVida(){
-        console.info('descontar tiempo de vida', this.tiempoDeVida);
-        if(this.tiempoDeVida <= 0 || !this.estaVivo) {
-            console.error('Sin tiempo')
+    descontarTiempo(){
+        console.info("Tiempo restante", this.tiempo);
+        if(this.tiempo <= 0 || !this.estaVivo) {
+            console.error("Se acabo el tiempo.")
             return;
-        };
-
-        this.tiempoDeVida--;
+        }
+        this.tiempo--;
         setTimeout(() => {
-            this.descontarTiempoDeVida();
+            this.descontarTiempo();
+            
         }, 1000);
     }
-}
 
+}
 export default Jugador;
